@@ -75,7 +75,7 @@ class Nimenhuuto_iCal_Parser {
 		$result = [];
 
 		foreach ( $lines as $line ) {
-			if ( ! empty( $result ) && ( str_starts_with( $line, ' ' ) || str_starts_with( $line, "\t" ) ) ) {
+			if ( ! empty( $result ) && ( $line !== '' ) && ( $line[0] === ' ' || $line[0] === "\t" ) ) {
 				$result[ count( $result ) - 1 ] .= substr( $line, 1 );
 			} else {
 				$result[] = $line;
@@ -121,7 +121,7 @@ class Nimenhuuto_iCal_Parser {
 				// Date-only: YYYYMMDD — treat as midnight in site timezone.
 				$tz = $tzid ? new DateTimeZone( $tzid ) : $site_tz;
 				$dt = DateTime::createFromFormat( 'Ymd', $value, $tz );
-			} elseif ( str_ends_with( $value, 'Z' ) ) {
+			} elseif ( substr( $value, -1 ) === 'Z' ) {
 				// UTC float time.
 				$dt = DateTime::createFromFormat( 'Ymd\THis\Z', $value, new DateTimeZone( 'UTC' ) );
 				if ( $dt ) {

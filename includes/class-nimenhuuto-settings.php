@@ -150,12 +150,13 @@ class Nimenhuuto_Settings {
 
 		$action = sanitize_key( $_POST['action'] );
 
-		match ( $action ) {
-			'add'         => $this->handle_add(),
-			'delete'      => $this->handle_delete(),
-			'clear_cache' => $this->handle_clear_cache(),
-			default       => null,
-		};
+		if ( $action === 'add' ) {
+			$this->handle_add();
+		} elseif ( $action === 'delete' ) {
+			$this->handle_delete();
+		} elseif ( $action === 'clear_cache' ) {
+			$this->handle_clear_cache();
+		}
 	}
 
 	private function handle_add(): void {
