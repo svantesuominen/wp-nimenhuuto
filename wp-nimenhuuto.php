@@ -4,7 +4,7 @@
  * Description: Display the next upcoming session from Nimenhuuto accounts via Gutenberg block or shortcode.
  * Version: 1.0.0
  * Requires at least: 6.0
- * Requires PHP: 8.0
+ * Requires PHP: 7.4
  * License: MIT
  */
 

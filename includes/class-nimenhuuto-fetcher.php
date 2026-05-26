@@ -77,7 +77,7 @@ class Nimenhuuto_Fetcher {
 	}
 
 	private function webcal_to_https( string $url ): string {
-		if ( str_starts_with( strtolower( $url ), 'webcal://' ) ) {
+		if ( strncasecmp( $url, 'webcal://', 9 ) === 0 ) {
 			return 'https://' . substr( $url, strlen( 'webcal://' ) );
 		}
 		return $url;
